@@ -10,13 +10,9 @@ const client = new Client({
   fromMe: false, 
   owners: [
   // Owner 1
-    { name: "VA", lid: "247579682029763@lid", jid: "972569311531@s.whatsapp.net" },
+    { name: "Sukuna", jid: "212698498657@s.whatsapp.net",
   // Owner 2
-    { name: "emam", lid: "212627546849@lid", jid: "201144480436@s.whatsapp.net" },
-  // Owner 3
-    { name: "Sukuna", jid: "201033024135@s.whatsapp.net", lid: "50414477168824@lid" },
-  // Owner 4 
-   { name: "عمورتي", jid: "201050079089@s.whatsapp.net", lid: "51664513925368@lid" }
+   { name: "عمورتي", jid: "212698498657@s.whatsapp.net",
   ],
   settings: { noWelcome: false },
   commandsPath: './plugins'

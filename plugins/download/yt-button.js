@@ -1,5 +1,5 @@
 const handler = async (m, { conn, text }) => {
-    if (!text) return m.reply("💙 ~ اكتب نص الفيديو او الاغنيه ~ ❤️");
+    if (!text) return m.reply("📥 _Please enter the song name and I will download it for you immediately_");
     
     const res = await fetch(`https://emam-api.web.id/home/sections/Search/api/YouTube/search?q=${text}`);
     const { data } = await res.json();
@@ -8,13 +8,13 @@ const handler = async (m, { conn, text }) => {
     await conn.sendButton(m.chat, {
         imageUrl: image,
         bodyText: `${title} ╎ ${time}`,
-        footerText: "🕸️ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 ~ 𝐘𝐨𝐮𝐓𝐮𝐛𝐞 🕸️",
+        footerText: "Download from YouTube",
         buttons: [
-            { name: "quick_reply", params: { display_text: "🎼 ╎ تـحـمـيـل صـوت", id: `.يوت_اغنيه ${url}` } },
-            { name: "quick_reply", params: { display_text: "🎬 ╎ تـحـمـيـل فـيـديـو", id: `.يوتيوب ${url}` } }
+            { name: "quick_reply", params: { display_text: "Download Audio 🎵", id: `.يوت_اغنيه ${url}` } },
+            { name: "quick_reply", params: { display_text: "Download Video 🎬", id: `.يوتيوب ${url}` } }
         ],
         mentions: [m.sender],
-        newsletter: { name: "𝐕𝐈𝐈7 ~ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 🕷️", jid: "120363225356834044@newsletter" },
+        newsletter: { name: "", jid: "120363225356834044@newsletter" },
         interactiveConfig: { buttons_limits: 10, list_title: "Pomni 🎀", button_title: "Pomni 🎀", canonical_url: url }
     }, m);
 };

@@ -4,7 +4,7 @@ async function sub(client) {
 
   global.subBots = new SubBots(client.commandSystem)
   
-  SubBots.pariCode("ABCD1234") // Pairing
+  SubBots.pariCode("JEEN-12MD") // Pairing
  
   const { config } = client;
 

@@ -5,18 +5,18 @@ import sub from './sub.js';
 
 /* =========== Client ========== */
 const client = new Client({
-  phoneNumber: '212622155826', // Bot number
+  phoneNumber: '212698498657', // Bot number
   prefix: [".", "/", ""],
   fromMe: false, 
   owners: [
   // Owner 1
-    { name: "YONO", lid: "120363428598542954@lid", jid: "212698498657@s.whatsapp.net" },
+    { name: "YONO", lid: "120363428598542954@lid", jid: "212622155826@s.whatsapp.net" },
   // Owner 2
-    { name: "YONO", lid: "120363428598542954@lid", jid: "212698498657@s.whatsapp.net" },
+    { name: "YONO", lid: "120363428598542954@lid", jid: "212622155826@s.whatsapp.net" },
   // Owner 3
-    { name: "YONO", jid: "212698498657@s.whatsapp.net", lid: "120363428598542954@lid" },
+    { name: "YONO", jid: "212622155826@s.whatsapp.net", lid: "120363428598542954@lid" },
   // Owner 4 
-   { name: "YONO", jid: "212698498657@s.whatsapp.net", lid: "120363428598542954@lid" }
+   { name: "YONO", jid: "212622155826@s.whatsapp.net", lid: "120363428598542954@lid" }
   ],
   settings: { noWelcome: true },
   commandsPath: './plugins'

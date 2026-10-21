@@ -5,7 +5,7 @@ import sub from './sub.js';
 
 /* =========== Client ========== */
 const client = new Client({
-  phoneNumber: '212698498657', // Bot number
+  phoneNumber: '21269849857', // Bot number
   prefix: [".", "/", ""],
   fromMe: false, 
   owners: [
@@ -33,8 +33,8 @@ if (!global.db) {
 /* =========== Config ========== */
 const { config } = client;
 config.info = { 
-  nameBot: "Jeen-md", 
-  nameChannel: "Jeen Ai", 
+  nameBot: "JEEN-MD", 
+  nameChannel: "JEEN-MD", 
   idChannel: "120363225356834044@newsletter",
   urls: {
     repo: "https://github.com/deveni0/Pomni-AI",

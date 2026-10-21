@@ -1,16 +1,16 @@
 const handler = async (m, { conn, command }) => {
-  if (command === "قفل") {
+  if (command === "close") {
     await conn.groupSettingUpdate(m.chat, 'announcement');
-    m.reply('🔒 *تم قفل الشات* 🔒');
-  } else if (command === "فتح") {
+    m.reply('🔒 *Chat has been closed* 🔒');
+  } else if (command === "open") {
     await conn.groupSettingUpdate(m.chat, 'not_announcement');
-    m.reply('🔓 *تم فتح الشات* 🔓');
+    m.reply('🔓 *Chat has been opened* 🔓');
   }
 };
 
-handler.usage = ["قفل", "فتح"];
+handler.usage = ["close", "open"];
 handler.category = "admin";
-handler.command = ["قفل", "فتح"];
+handler.command = ["close", "open"];
 handler.admin = true;
 handler.botAdmin = true;
 

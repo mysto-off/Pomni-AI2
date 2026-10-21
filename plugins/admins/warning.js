@@ -2,13 +2,13 @@ const handler = async (m, { conn }) => {
   let targetLid = m.mentionedJid?.[0] || m.quoted?.sender;
   let targetJid = m.lid2jid(targetLid);
 
-  if (!targetJid || !targetLid) return m.reply('⚠️ *يرجى منشن الشخص أو الرد على رسالته* ⚠️');
+  if (!targetJid || !targetLid) return m.reply('⚠️ *Please mention the user or reply to their message* ⚠️');
 
   const user = (await conn.groupMetadata(m.chat)).participants.find(
     p => p.id === targetLid || p.phoneNumber === targetJid
   );
 
-  if (!user) return m.reply("❌ المستخدم غير موجود في الجروب");
+  if (!user) return m.reply("❌ User not found in the group");
 
   db.groups[m.chat] ??= {};
   db.groups[m.chat].warnings ??= {};
@@ -20,10 +20,10 @@ const handler = async (m, { conn }) => {
     (db.groups[m.chat].warnings[id] || 0) + 1;
 
   await conn.sendMessage(m.chat, {
-    text: `⚠️ تم إعطاء إنذار
+    text: `⚠️ Warning issued
 
 👤: @${id.split("@")[0]}
-📊 عدد الإنذارات: ${warnCount}`,
+📊 Warnings count: ${warnCount}`,
     mentions: [jid]
   }, { quoted: global.reply_status });
 };
@@ -38,7 +38,7 @@ handler.before = async (m, { conn }) => {
 
   if (g.warnings[user] >= 3) {
     await conn.sendMessage(m.chat, {
-      text: `🚫 @${user.split("@")[0]} انت خالفت القوانين، دلوقتي هنطردك`,
+      text: `🚫 @${user.split("@")[0]} You have violated the rules, you will now be kicked`,
       mentions: [user]
     }, { quoted: global.reply_status });
 
@@ -49,8 +49,8 @@ handler.before = async (m, { conn }) => {
   return false;
 };
 
-handler.command = ["انذار", "تحذير", "warn"];
-handler.usage = ['انذار'];
+handler.command = ["warn", "warning"];
+handler.usage = ['warn'];
 handler.category = "admin";
 handler.admin = true;
 handler.botAdmin = true

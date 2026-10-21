@@ -14,45 +14,45 @@ let control = async (m, { command, text, conn, bot, participants }) => {
             return null;
         };
 
-        if (command === "ضيف") {
-            if (!text) return m.reply("❌ فين الرقم؟");
+        if (command === "add") {
+            if (!text) return m.reply("❌ Where is the number?");
             if (m.quoted) {
                 await conn.groupParticipantsUpdate(m.chat, [m.quoted.sender], 'add');
-                return m.reply("*✅ تمت الإضافة*");
+                return m.reply("*✅ Added successfully*");
             }
             if (m.mentionedJid && m.mentionedJid.length > 0) {
                 await conn.groupParticipantsUpdate(m.chat, [m.mentionedJid[0]], 'add');
-                return m.reply("*✅ تمت الإضافة*");
+                return m.reply("*✅ Added successfully*");
             }
             await conn.groupParticipantsUpdate(m.chat, [text + "@s.whatsapp.net"], 'add');
-            return m.reply("*✅ تمت الإضافة*");
+            return m.reply("*✅ Added successfully*");
         }
         
-        if (command === "طرد") {
+        if (command === "kick") {
             let user = getUser();
-            if (!user) return m.reply("❌ منشن أو رد على العضو");
+            if (!user) return m.reply("❌ Mention or reply to the user");
             
             if (isBotOwner(user) || user === conn.user.id) {
-                m.reply("بتهزر ؟");
+                m.reply("Are you kidding me?");
                 return await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
             }
             
             await conn.groupParticipantsUpdate(m.chat, [user], 'remove');
-            return m.reply("✅ تم الطرد");
+            return m.reply("✅ Kicked successfully");
         }
         
-        if (command === "رفع") {
+        if (command === "promote") {
             let user = getUser();
-            if (!user) return m.reply("❌ منشن أو رد على العضو");
+            if (!user) return m.reply("❌ Mention or reply to the user");
             await conn.groupParticipantsUpdate(m.chat, [user], 'promote');
-            return m.reply("✅ تم الرفع");
+            return m.reply("✅ Promoted to admin");
         }
         
-        if (command === "خفض") {
+        if (command === "demote") {
             let user = getUser();
-            if (!user) return m.reply("❌ منشن أو رد على العضو");
+            if (!user) return m.reply("❌ Mention or reply to the user");
             await conn.groupParticipantsUpdate(m.chat, [user], 'demote');
-            return m.reply("✅ تم الخفض");
+            return m.reply("✅ Demoted successfully");
         }
         
     } catch (error) {
@@ -60,8 +60,8 @@ let control = async (m, { command, text, conn, bot, participants }) => {
     }
 };
 
-control.usage = ['ضيف', 'طرد', 'رفع', 'خفض'];
-control.command = ['ضيف', 'طرد', 'رفع', 'خفض'];
+control.usage = ['add', 'kick', 'promote', 'demote'];
+control.command = ['add', 'kick', 'promote', 'demote'];
 control.admin = true;
 control.botAdmin = true;
 control.category = "admin";
